@@ -17,6 +17,19 @@ permissions:
   contents: read
 
 jobs:
+
+
+  terraform-init:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: eu-north-1
+          role-to-assume: arn:aws:iam::920373027332:role/GithubActionsRole
+      - uses: hashicorp/setup-terraform@v3 
+      - run: terraform fmt -check
+
+
   terraform-check:
     runs-on: ubuntu-latest
     steps:
