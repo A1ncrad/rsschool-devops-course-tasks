@@ -22,18 +22,16 @@ jobs:
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          audience: sts.amazonaws.com
           aws-region: eu-north-1
           role-to-assume: arn:aws:iam::920373027332:role/GithubActionsRole
       - uses: hashicorp/setup-terraform@v3 
-      - run: terraform init
+      - run: terraform fmt -check
 
   terraform-plan:
     runs-on: ubuntu-latest
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          audience: sts.amazonaws.com
           aws-region: eu-north-1
           role-to-assume: arn:aws:iam::920373027332:role/GithubActionsRole
       - uses: hashicorp/setup-terraform@v3 
@@ -44,7 +42,6 @@ jobs:
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          audience: sts.amazonaws.com
           aws-region: eu-north-1
           role-to-assume: arn:aws:iam::920373027332:role/GithubActionsRole
       - uses: hashicorp/setup-terraform@v3 
