@@ -36,6 +36,7 @@ jobs:
           role-to-assume: arn:aws:iam::920373027332:role/GithubActionsRole
       - uses: hashicorp/setup-terraform@v3 
       - uses: actions/checkout@v4.2.0
+      - run: terraform init -reconfigure
       - run: terraform plan -input=false
 
   terraform-apply:
